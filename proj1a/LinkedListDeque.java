@@ -30,11 +30,27 @@ public class LinkedListDeque <T>{
 
     /* 1.2.add first and add last method */
     public void addFirst(T x) {
-        sentinel.next = new Node(sentinel, x, sentinel.next);
+        if(this.isEmpty()) {
+            sentinel.next = new Node(sentinel, x, sentinel);
+            sentinel.prev = sentinel.next;
+        }
+        else {
+            Node newnode = new Node(sentinel, x, sentinel.next);
+            sentinel.next.prev = newnode;
+            sentinel.next = newnode;
+        }
         size += 1;
     }
     public void addLast(T x) {
-        sentinel.prev = new Node(sentinel.next, x, sentinel);
+        if(this.isEmpty()) {
+            sentinel.next = new Node(sentinel, x, sentinel);
+            sentinel.prev = sentinel.next;
+        }
+        else {
+            Node newnode = new Node(sentinel.next, x, sentinel);
+            sentinel.prev.next = newnode;
+            sentinel.prev = newnode;
+        }
         size += 1;
     }
     /* 6.7remove first and remove last method */
@@ -45,6 +61,7 @@ public class LinkedListDeque <T>{
         T x;
         x=sentinel.next.item;
         sentinel.next=sentinel.next.next;
+        sentinel.next.prev=sentinel;
         size-=1;
         return x;
     }
@@ -55,11 +72,12 @@ public class LinkedListDeque <T>{
         T x;
         x=sentinel.prev.item;
         sentinel.prev=sentinel.prev.prev;
+        sentinel.prev.next=sentinel;
         return x;
     }
     /*  3. return empty  */
     public boolean isEmpty() {
-        if (sentinel.next == null) {
+        if (size==0) {
             return true;
         } else {
             return false;
@@ -69,14 +87,18 @@ public class LinkedListDeque <T>{
         return size;
     }
 
-    public void printDeque(LinkedListDeque x){
+    public void printDeque(){
         if(size==0){
             System.out.printf(null);
         }
         Node p=sentinel;
         while(p.next!=sentinel){
             System.out.print(p.item+" ");
+            p=p.next;
         }
+
+
+
         System.out.println();
     }
     public T get(int index){
@@ -90,6 +112,20 @@ public class LinkedListDeque <T>{
             i++;
         }
         return p.item;
+    }
+    private T recursiveHelper(Node p,int index) {
+        if (index == 0) {
+            return p.item;
+        }
+        return recursiveHelper(p.next,index - 1);
+    }
+
+    public T getRecursive(int index) {
+        if(index > size) {
+            return null;
+        } else {
+            return recursiveHelper(sentinel.next,index);
+        }
     }
 
 }
