@@ -73,6 +73,7 @@ public class LinkedListDeque <T>{
         x=sentinel.prev.item;
         sentinel.prev=sentinel.prev.prev;
         sentinel.prev.next=sentinel;
+        size-=1;
         return x;
     }
     /*  3. return empty  */
