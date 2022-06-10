@@ -60,8 +60,12 @@ public class LinkedListDeque <T>{
         }
         T x;
         x=sentinel.next.item;
+        /*
         sentinel.next=sentinel.next.next;
         sentinel.next.prev=sentinel;
+         */
+        sentinel.next.next.prev=sentinel;
+        sentinel.next=sentinel.next.next;
         size-=1;
         return x;
     }
@@ -71,8 +75,12 @@ public class LinkedListDeque <T>{
         }
         T x;
         x=sentinel.prev.item;
+        /*
         sentinel.prev=sentinel.prev.prev;
         sentinel.prev.next=sentinel;
+         */
+        sentinel.prev.prev.next=sentinel;
+        sentinel.prev=sentinel.prev.prev;
         size-=1;
         return x;
     }
