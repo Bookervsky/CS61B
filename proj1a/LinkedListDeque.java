@@ -54,7 +54,7 @@ public class LinkedListDeque <T>{
         size += 1;
     }
     /* 6.7remove first and remove last method */
-    public Object removeFirst(){
+    public T removeFirst(){
         if(size==0){
             return null;
         }
@@ -65,7 +65,7 @@ public class LinkedListDeque <T>{
         size-=1;
         return x;
     }
-    public Object removeLast(){
+    public T removeLast(){
         if(size==0){
             return null;
         }
