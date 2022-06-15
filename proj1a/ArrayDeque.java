@@ -5,6 +5,7 @@ public class ArrayDeque<T> {
     private int length=8;
     public int head=3;
     public int tail=3;
+
     public T[] l;
     /*build new ArrayDeque*/
     public ArrayDeque(){
