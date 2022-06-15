@@ -19,6 +19,7 @@ public class ArrayDeque<T> {
     public void checksizelarge(){
         if (size==length){
             resize(length*2);
+            length=length*2;
         }
     }
     public void checksizesmall(){
@@ -30,12 +31,12 @@ public class ArrayDeque<T> {
         return size;
     }
     /* resize the array if size not enough*/
-    public void resize(int length){
-        T[] a=(T[]) new Object[length];
+    public void resize(int x){
+        T[] a=(T[]) new Object[x];
         System.arraycopy(l,0,a,0,size);
         l=a;
         /* bruh this step is just genius*/
-        head=length-1;
+        head=x-1;
         tail=size;
 
     }
@@ -98,4 +99,16 @@ public class ArrayDeque<T> {
         }
         System.out.println();
     }
+    /*
+    public static void main(String[] args){
+        ArrayDeque<Integer> l= new ArrayDeque<>();
+        for(int i=0;i<=16;i++){
+            l.addFirst(i);
+        }
+        for(int i=17;i<=20;i++){
+            l.addLast(i);
+        }
+        l.printDeque();
+    }
+     */
 }
