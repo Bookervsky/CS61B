@@ -1,34 +1,47 @@
 import java.lang.reflect.Array;
 
-public class ArrayDeque {
+public class ArrayDeque<T> {
     private int size;
     private int length=8;
     public int head=3;
     public int tail=3;
-    public  int l[];
+    public T[] l;
     /*build new ArrayDeque*/
     public ArrayDeque(){
-        l=new int[length];
+        l=(T[]) new Object[length];
         size=0;
     }
+    public boolean isEmpty(){
+        return size==0;
+    }
     /*check if size>length, if so resize size*/
-    public void checksize(){
+    public void checksizelarge(){
         if (size==length){
             resize(length*2);
         }
     }
+    public void checksizesmall(){
+        if(length>=16&&size/length<0.25){
+            length=length/2;
+        }
+    }
+    public int size(){
+        return size;
+    }
     /* resize the array if size not enough*/
     public void resize(int length){
-        int[] a=new int[length];
+        T[] a=(T[]) new Object[length];
         System.arraycopy(l,0,a,0,size);
         l=a;
-        /* bruh this step is just jenius*/
+        /* bruh this step is just genius*/
         head=length-1;
         tail=size;
 
     }
+
+
     /*add first, head node step one block forward every time*/
-    public void addFirst(int x){
+    public void addFirst(T x){
         l[head]=x;
         if(head==0){
             head=length-1;
@@ -36,10 +49,10 @@ public class ArrayDeque {
             head--;
         }
         size++;
-        checksize();
+        checksizelarge();
     }
     /*add last, tail node step one block backward every time*/
-    public void addLast(int x){
+    public void addLast(T x){
         l[tail]=x;
         if(tail==length-1){
             tail=0;
@@ -47,10 +60,41 @@ public class ArrayDeque {
             tail++;
         }
         size++;
-        checksize();
+        checksizelarge();
     }
 
     public void removeFirst(){
+        if(head==size-1||(head==length-1&&size==length/2)){
+            head=0;
+        }else {
+            head++;
+              }
+        size--;
+        checksizesmall();
+        }
+    public void removeLast(){
+        if(tail==0||tail==size){
+            tail=size-1;
+        }else{
+            size++;
+        }
+        size--;
+        checksizesmall();
+    }
 
+    public T get(int index){
+        /*???这谁想得出来？？？？？？？*/
+        if(index>size){
+            return null;
+        }
+        return l[(head+1+index)%length];
+    }
+    public void printDeque(){
+        int i=0;
+        while(i<size){
+            System.out.print(l[(head+1+i)%length]+" ");
+            i++;
+        }
+        System.out.println();
     }
 }
