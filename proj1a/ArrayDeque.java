@@ -65,7 +65,8 @@ public class ArrayDeque<T> {
         checksizelarge();
     }
 
-    public void removeFirst(){
+    public T removeFirst(){
+        T x=l[(head+1)%length];
         if(head==size-1||(head==length-1&&size==length/2)){
             head=0;
         }else {
@@ -73,8 +74,10 @@ public class ArrayDeque<T> {
               }
         size--;
         checksizesmall();
+        return x;
         }
-    public void removeLast(){
+    public T removeLast(){
+        T x=l[(head+size)%length];
         if(tail==0||tail==size){
             tail=size-1;
         }else{
@@ -82,13 +85,14 @@ public class ArrayDeque<T> {
         }
         size--;
         checksizesmall();
+        return x;
     }
 
     public T get(int index){
-        /*???这谁想得出来？？？？？？？*/
         if(index>size){
             return null;
         }
+        /*???这谁想得出来？？？？？？？*/
         return l[(head+1+index)%length];
     }
     public void printDeque(){
