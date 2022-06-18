@@ -1,9 +1,9 @@
 public class LinkedListDeque <T>{
     /*create Node class  */
-    public class Node{
-        public Node prev;
-        public T item;
-        public Node next;
+    private class Node{
+        private Node prev;
+        private T item;
+        private Node next;
 
         public Node(Node p, T i, Node n) {
             prev = p;
@@ -20,14 +20,14 @@ public class LinkedListDeque <T>{
     public  LinkedListDeque() {
         sentinel = new Node(null, null, null);
     }
-
+    /**
     public  LinkedListDeque(T x) {
         sentinel = new Node(null, null, null);
         sentinel.next = new Node(sentinel, x, sentinel);
         sentinel.prev = sentinel.next;
         size = 1;
     }
-
+    */
     /* 1.2.add first and add last method */
     public void addFirst(T x) {
         if(this.isEmpty()) {
@@ -103,17 +103,18 @@ public class LinkedListDeque <T>{
         System.out.println();
     }
     public T get(int index){
-        if(size==0){
+        if(size==0||index>size){
             return null;
         }
         int i=0;
-        Node p=sentinel.next;
-        while(i<index){
+        Node p=sentinel;
+        while(i<=index){
             p=p.next;
             i++;
         }
         return p.item;
     }
+
     private T recursiveHelper(Node p,int index) {
         if (index == 0) {
             return p.item;

@@ -3,10 +3,10 @@ import java.lang.reflect.Array;
 public class ArrayDeque<T> {
     private int size;
     private int length=8;
-    public int head=3;
-    public int tail=3;
+    private int head=3;
+    private int tail=3;
 
-    public T[] l;
+    private T[] l;
     /*build new ArrayDeque*/
     public ArrayDeque(){
         l=(T[]) new Object[length];
@@ -33,12 +33,13 @@ public class ArrayDeque<T> {
     /* resize the array if size not enough*/
     public void resize(int x){
         T[] a=(T[]) new Object[x];
-        System.arraycopy(l,0,a,0,size);
+        for(int i=0;i<size;i++){
+            a[i]=l[(head+1+i)%length];
+        }
         l=a;
         /* bruh this step is just genius*/
         head=x-1;
         tail=size;
-
     }
 
 
@@ -67,7 +68,7 @@ public class ArrayDeque<T> {
 
     public T removeFirst(){
         T x=l[(head+1)%length];
-        if(head==size-1||(head==length-1&&size==length/2)){
+        if(head==length-1){
             head=0;
         }else {
             head++;
@@ -78,7 +79,7 @@ public class ArrayDeque<T> {
         }
     public T removeLast(){
         T x=l[(head+size)%length];
-        if(tail==0||tail==size){
+        if(tail==0){
             tail=size-1;
         }else{
             size++;
@@ -87,6 +88,7 @@ public class ArrayDeque<T> {
         checksizesmall();
         return x;
     }
+
 
     public T get(int index){
         if(index>size){
@@ -106,13 +108,15 @@ public class ArrayDeque<T> {
     /*
     public static void main(String[] args){
         ArrayDeque<Integer> l= new ArrayDeque<>();
-        for(int i=0;i<=16;i++){
+        for(int i=15;i>=1;i--){
             l.addFirst(i);
         }
-        for(int i=17;i<=20;i++){
+        for(int i=16;i<=36;i++){
             l.addLast(i);
         }
+        l.addFirst(0);
         l.printDeque();
+        T x=l.get(30);
     }
-     */
+    */
 }
