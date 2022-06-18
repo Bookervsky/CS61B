@@ -4,7 +4,7 @@ public class ArrayDeque<T> {
     private int size;
     private int length=8;
     private int head=3;
-    private int tail=3;
+    private int tail=4;
 
     private T[] l;
     /*build new ArrayDeque*/
@@ -83,7 +83,7 @@ public class ArrayDeque<T> {
         if(tail==0){
             tail=size-1;
         }else{
-            size++;
+            tail--;
         }
         size--;
         checksizesmall();
@@ -109,18 +109,12 @@ public class ArrayDeque<T> {
     /*
     public static void main(String[] args){
         ArrayDeque<Integer> l= new ArrayDeque<>();
-        for(int i=15;i>=1;i--){
-            l.addFirst(i);
-        }
-        for(int i=0;i<13;i++){
-        l.removeFirst();}
-        for (int i=100;i<120;i++){
-            l.addFirst(i);
-        }
-        for(int i=16;i<=36;i++){
-            l.addLast(i);
-        }
-        l.printDeque();
+        l.addFirst(0);
+        l.removeLast();
+        l.addFirst(2);
+        l.addFirst(3);
+        l.removeLast();
+        l.addLast(100);
     }
-    */
+     */
 }
