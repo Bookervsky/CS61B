@@ -69,6 +69,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
+        if(size==0){
+            return null;
+        }
         checksizesmall();
         T x=l[(head+1)%length];
         if(head==length-1){
@@ -80,10 +83,13 @@ public class ArrayDeque<T> {
         return x;
         }
     public T removeLast(){
+        if(size==0){
+            return null;
+        }
         checksizesmall();
         T x=l[(head+size)%length];
         if(tail==0){
-            tail=size-1;
+            tail=length-1;
         }else{
             tail--;
         }
@@ -108,17 +114,29 @@ public class ArrayDeque<T> {
         System.out.println();
     }
     /*
-    public static void main(String[] args){
-        ArrayDeque<Integer> l= new ArrayDeque<>();
-       for(int i=64;i>0;i--){
-           l.addFirst(i);
-       }
-       l.removeLast();
-       l.removeFirst();
-       l.addFirst(1);
-       l.addLast(100);
-        l.printDeque();
+    public static void main(String[] args) {
+        ArrayDeque<Integer> l = new ArrayDeque<>();
+        l.addFirst(0);
         l.get(0);
+        l.removeFirst();
+        l.addLast(3);
+        l.get(0);
+        l.addFirst(5);
+        l.get(0);
+        l.addLast(8);
+        l.addLast(9);
+        l.addFirst(10);
+        l.addFirst(11);
+        l.addLast(12);
+        l.removeFirst();
+        l.removeLast();
+        l.removeFirst();
+        l.removeLast();
+        l.get(2);
+        l.addLast(18);
+        l.addLast(19);
+        l.get(3);
+        l.printDeque();
     }
-    */
+     */
 }
