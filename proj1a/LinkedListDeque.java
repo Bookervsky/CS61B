@@ -108,7 +108,7 @@ public class LinkedListDeque <T>{
         }
         int i=0;
         Node p=sentinel;
-        while(i<=index){
+        while(i<index){
             p=p.next;
             i++;
         }

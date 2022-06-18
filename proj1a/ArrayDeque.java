@@ -16,14 +16,15 @@ public class ArrayDeque<T> {
         return size==0;
     }
     /*check if size>length, if so resize size*/
-    public void checksizelarge(){
+    private void checksizelarge(){
         if (size==length){
             resize(length*2);
             length=length*2;
         }
     }
-    public void checksizesmall(){
-        if(length>=16&&size/length<0.25){
+    private void checksizesmall(){
+        /** u can't write  "size/length<0.25" here because they are both integer, u will get 0 instead of a decimal */
+        if(length>=16&&length/size>4){
             length=length/2;
         }
     }
@@ -31,7 +32,7 @@ public class ArrayDeque<T> {
         return size;
     }
     /* resize the array if size not enough*/
-    public void resize(int x){
+    private void resize(int x){
         T[] a=(T[]) new Object[x];
         for(int i=0;i<size;i++){
             a[i]=l[(head+1+i)%length];
@@ -67,7 +68,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
-        T x=l[head+1];
+        T x=l[(head+1)%length];
         if(head==length-1){
             head=0;
         }else {
@@ -95,7 +96,7 @@ public class ArrayDeque<T> {
             return null;
         }
         /*???这谁想得出来？？？？？？？*/
-        return l[(head+1+index)%length];
+        return l[(head+index)%length];
     }
     public void printDeque(){
         int i=0;
@@ -105,17 +106,21 @@ public class ArrayDeque<T> {
         }
         System.out.println();
     }
-
+    /*
     public static void main(String[] args){
         ArrayDeque<Integer> l= new ArrayDeque<>();
         for(int i=15;i>=1;i--){
             l.addFirst(i);
         }
+        for(int i=0;i<13;i++){
+        l.removeFirst();}
+        for (int i=100;i<120;i++){
+            l.addFirst(i);
+        }
         for(int i=16;i<=36;i++){
             l.addLast(i);
         }
-        l.addFirst(0);
         l.printDeque();
     }
-
+    */
 }
