@@ -25,6 +25,7 @@ public class ArrayDeque<T> {
     private void checksizesmall(){
         /** u can't write  "size/length<0.25" here because they are both integer, u will get 0 instead of a decimal */
         if(length>=16&&length/size>4){
+            resize(length/2);
             length=length/2;
         }
     }

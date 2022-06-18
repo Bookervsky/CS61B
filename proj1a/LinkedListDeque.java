@@ -134,8 +134,8 @@ public class LinkedListDeque <T>{
         LinkedListDeque<Integer> l=new LinkedListDeque<>();
         l.addFirst(1);
         l.addLast(2);
+        l.removeFirst();
         l.get(0);
-
     }
     */
 }
