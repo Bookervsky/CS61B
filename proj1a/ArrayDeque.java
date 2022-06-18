@@ -67,7 +67,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
-        T x=l[(head+1)%length];
+        T x=l[head+1];
         if(head==length-1){
             head=0;
         }else {
@@ -105,7 +105,7 @@ public class ArrayDeque<T> {
         }
         System.out.println();
     }
-    /*
+
     public static void main(String[] args){
         ArrayDeque<Integer> l= new ArrayDeque<>();
         for(int i=15;i>=1;i--){
@@ -116,7 +116,6 @@ public class ArrayDeque<T> {
         }
         l.addFirst(0);
         l.printDeque();
-        T x=l.get(30);
     }
-    */
+
 }
