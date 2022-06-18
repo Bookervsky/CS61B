@@ -46,6 +46,7 @@ public class ArrayDeque<T> {
 
     /*add first, head node step one block forward every time*/
     public void addFirst(T x){
+        checksizelarge();
         l[head]=x;
         if(head==0){
             head=length-1;
@@ -53,10 +54,10 @@ public class ArrayDeque<T> {
             head--;
         }
         size++;
-        checksizelarge();
     }
     /*add last, tail node step one block backward every time*/
     public void addLast(T x){
+        checksizelarge();
         l[tail]=x;
         if(tail==length-1){
             tail=0;
@@ -64,10 +65,10 @@ public class ArrayDeque<T> {
             tail++;
         }
         size++;
-        checksizelarge();
     }
 
     public T removeFirst(){
+        checksizesmall();
         T x=l[(head+1)%length];
         if(head==length-1){
             head=0;
@@ -75,10 +76,10 @@ public class ArrayDeque<T> {
             head++;
               }
         size--;
-        checksizesmall();
         return x;
         }
     public T removeLast(){
+        checksizesmall();
         T x=l[(head+size)%length];
         if(tail==0){
             tail=size-1;
@@ -86,7 +87,6 @@ public class ArrayDeque<T> {
             tail--;
         }
         size--;
-        checksizesmall();
         return x;
     }
 
@@ -96,7 +96,7 @@ public class ArrayDeque<T> {
             return null;
         }
         /*???这谁想得出来？？？？？？？*/
-        return l[(head+index)%length];
+        return l[(head+1+index)%length];
     }
     public void printDeque(){
         int i=0;
@@ -109,12 +109,15 @@ public class ArrayDeque<T> {
     /*
     public static void main(String[] args){
         ArrayDeque<Integer> l= new ArrayDeque<>();
-        l.addFirst(0);
-        l.removeLast();
-        l.addFirst(2);
-        l.addFirst(3);
-        l.removeLast();
-        l.addLast(100);
+       for(int i=64;i>0;i--){
+           l.addFirst(i);
+       }
+       l.removeLast();
+       l.removeFirst();
+       l.addFirst(1);
+       l.addLast(100);
+        l.printDeque();
+        l.get(0);
     }
-     */
+    */
 }

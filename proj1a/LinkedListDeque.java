@@ -108,7 +108,7 @@ public class LinkedListDeque <T>{
         }
         int i=0;
         Node p=sentinel;
-        while(i<index){
+        while(i<=index){
             p=p.next;
             i++;
         }
@@ -129,5 +129,13 @@ public class LinkedListDeque <T>{
             return recursiveHelper(sentinel.next,index);
         }
     }
+    /*
+    public static void main(String[] args){
+        LinkedListDeque<Integer> l=new LinkedListDeque<>();
+        l.addFirst(1);
+        l.addLast(2);
+        l.get(0);
 
+    }
+    */
 }
