@@ -47,7 +47,7 @@ public class LinkedListDeque <T>{
             sentinel.prev = sentinel.next;
         }
         else {
-            Node newnode = new Node(sentinel.next, x, sentinel);
+            Node newnode = new Node(sentinel.prev, x, sentinel);
             sentinel.prev.next = newnode;
             sentinel.prev = newnode;
         }
@@ -129,13 +129,23 @@ public class LinkedListDeque <T>{
             return recursiveHelper(sentinel.next,index);
         }
     }
+    public LinkedListDeque(LinkedListDeque<T> other){
+        sentinel = new Node(null, null, null);
+        size=0;
+        for(int i=0;i<other.size();i++){
+            addFirst(other.get(i));
+        }
+    }
     /*
     public static void main(String[] args){
         LinkedListDeque<Integer> l=new LinkedListDeque<>();
+        l.addLast(0);
         l.addFirst(1);
         l.addLast(2);
-        l.removeFirst();
+        l.get(2);
         l.get(0);
+        l.removeLast();
+        l.removeLast();
     }
     */
 }
