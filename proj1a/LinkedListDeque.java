@@ -129,6 +129,7 @@ public class LinkedListDeque <T>{
             return recursiveHelper(sentinel.next,index);
         }
     }
+    /*
     public LinkedListDeque(LinkedListDeque<T> other){
         sentinel = new Node(null, null, null);
         size=0;
