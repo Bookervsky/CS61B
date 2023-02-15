@@ -18,10 +18,13 @@ public class TestPalindrome {
     @Test
     public void testisPalindrome(){
         boolean t1 = palindrome.isPalindrome("abcdedcba");
-        boolean t3 = palindrome.isPalindrome("aaaaaaaaaaaaaabaaaaaaaaaaaaaa");
-        boolean t2 = palindrome.isPalindrome("coffee");
-        assertTrue(t1);
-        assertFalse(t2);
+        boolean t2 = palindrome.isPalindrome("racecar");
+        boolean t3 = palindrome.isPalindrome("coffee");
+        boolean t4 = palindrome.isPalindrome("noon");
+        assertTrue(t1 == true);
+        assertFalse(t2 == false);
+        assertTrue(t3 == false);
+        assertTrue(t4 == true);
     }
     @Test
     public void TestisPalindrome(){

@@ -9,8 +9,8 @@ public class Palindrome {
     }
     public boolean isPalindrome(String word){
         /*transfer word to Deque*/
+
        Deque<Character> array = new Palindrome().wordToDeque(word);
-        /*generate and compare ordered and reversed*/
         String ordered = "";
         String reversed = "";
         for(int i=0;i<word.length()/2;i++){

@@ -5,6 +5,6 @@ public class OffByOne implements CharacterComparator{
             return true;
         }
         return false;
-    };
+    }
 
 }
