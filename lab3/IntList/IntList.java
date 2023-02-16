@@ -35,6 +35,9 @@ public class IntList {
 
     // create a method that returns the reverse of the IntList//
     public static IntList reverse(IntList L) {
+        if (L == null) {
+            return null;
+        }
         IntList prev = null;
         IntList ptr = L;
         while (ptr.rest != null) {
@@ -44,7 +47,8 @@ public class IntList {
             ptr = next;
         }
         ptr.rest = prev;
-        return ptr;
+        L = ptr;
+        return L;
     }
     /**
      * Returns a list equal to L with all elements squared. Destructive.

@@ -12,7 +12,9 @@ public class IntListTest {
     @Test
     public void testreverse() {
         IntList l1 = IntList.of(1, 2, 3, 4);
+        IntList l2 = null;
         assertEquals(IntList.of(4, 3, 2, 1), IntList.reverse(l1));
+        assertEquals(null, IntList.reverse(l2));
     }
 
     @Test
