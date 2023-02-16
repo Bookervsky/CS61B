@@ -11,11 +11,11 @@ public class IntList {
     /**
      * First element of list.
      */
-    public int first;
+    private int first;
     /**
      * Remaining elements of list.
      */
-    public IntList rest;
+    private IntList rest;
 
     /**
      * A List with first FIRST0 and rest REST0.
@@ -33,6 +33,19 @@ public class IntList {
         this(0, null);
     }
 
+    // create a method that returns the reverse of the IntList//
+    public static IntList reverse(IntList L) {
+        IntList prev = null;
+        IntList ptr = L;
+        while (ptr.rest != null) {
+            IntList next = ptr.rest;
+            ptr.rest = prev;
+            prev = ptr;
+            ptr = next;
+        }
+        ptr.rest = prev;
+        return ptr;
+    }
     /**
      * Returns a list equal to L with all elements squared. Destructive.
      */
@@ -81,14 +94,14 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        if(A==null){
+
+        if (A == null) {
             return B;
         }
-        while(A.rest!=null){
-            A=A.rest;
+        while (A.rest != null) {
+            A = A.rest;
         }
-        A.rest=B;
+        A.rest = B;
         return A;
     }
 
@@ -97,14 +110,14 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        if(A==null){
+
+        if (A == null) {
             return B;
         }
-        if(A.rest==null){
-            return new IntList(A.first,B);
+        if (A.rest == null) {
+            return new IntList(A.first, B);
         }
-        return new IntList(A.first,catenate(A.rest,B));
+        return new IntList(A.first, catenate(A.rest, B));
     }
 
 

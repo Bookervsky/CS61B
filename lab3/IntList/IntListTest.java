@@ -9,6 +9,11 @@ public class IntListTest {
      * method. The main point of this is to convince you that
      * assertEquals knows how to handle IntLists just fine.
      */
+    @Test
+    public void testreverse() {
+        IntList l1 = IntList.of(1, 2, 3, 4);
+        assertEquals(IntList.of(4, 3, 2, 1), IntList.reverse(l1));
+    }
 
     @Test
     public void testList() {
@@ -44,6 +49,13 @@ public class IntListTest {
     public void testSquareListRecursive() {
         IntList L = IntList.of(1, 2, 3);
         IntList res = IntList.squareListRecursive(L);
+        assertEquals(IntList.of(1, 2, 3), L);
+        assertEquals(IntList.of(1, 4, 9), res);
+    }
+    @Test
+    public void testsquareListIterative() {
+        IntList L = IntList.of(1, 2, 3);
+        IntList res = IntList.squareListIterative(L);
         assertEquals(IntList.of(1, 2, 3), L);
         assertEquals(IntList.of(1, 4, 9), res);
     }
